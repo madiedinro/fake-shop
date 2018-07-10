@@ -1,0 +1,95 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Страница карточки товара -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'product'
+      },
+      product: {
+        id: '{{ item.slug }}',
+        name: '{{ item.name }}',
+        category: {{ item.category|json_encode|raw }},
+        price: {{ item.price }},
+        salePrice: {{ item.salePrice is defined ? item.salePrice : 'undefined' }}
+      }
+    });
+  </script>
+
+
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x padding-top-2x pa mb-1">
+    <div class="row">
+      <!-- Poduct Gallery-->
+      <div class="col-md-6">
+        <div class="product-gallery">
+          {#<span class="product-badge text-danger">30% Off</span>#}
+          <div class="product-carousel">
+            <div data-hash="one"><img src="/img/goods/{{ item.img }}" alt="Product"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Product Info-->
+      <div class="col-md-6">
+        <form class="form-add-to-cart" action="/cart" method="post">
+          <input type="hidden" name="slug" value="{{ item.slug }}">
+          <div class="padding-top-2x mt-2 hidden-md-up"></div>
+          {#<div class="rating-stars">#}
+            {#<i class="icon-star filled"></i><i class="icon-star filled"></i>#}
+            {#<i class="icon-star filled"></i><i class="icon-star filled"></i><i class="icon-star"></i>#}
+          {#</div>#}
+          {#<span class="text-muted align-middle">&nbsp;&nbsp;4.2 | 3 customer reviews</span>#}
+          <h2 class="padding-top-1x text-normal">{{ item.name }}</h2><span class="h2 d-block">
+            {% if item.salePrice is defined %}
+              <del class="text-muted text-normal">{{ item.price }} руб</del>&nbsp; {{ item.salePrice }} руб</span>
+            {% else %}
+               {{ item.price }} руб</span>
+            {% endif %}
+          <p></p>
+          <div class="row margin-top-1x">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="size">Размер</label>
+                <select class="form-control" id="size" name="size">
+                  <option value="S">S</option>
+                  <option selected value="M">M</option>
+                  <option value="L">L</option>
+                  <option value="XL">XL</option>
+                </select>
+              </div>
+            </div>
+            {#<div class="col-sm-5">#}
+              {#<div class="form-group">#}
+                {#<label for="color">Choose color</label>#}
+                {#<select class="form-control" id="color">#}
+                  {#<option>White/Red/Blue</option>#}
+                  {#<option>Black/Orange/Green</option>#}
+                  {#<option>Gray/Purple/White</option>#}
+                {#</select>#}
+              {#</div>#}
+            {#</div>#}
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="quantity">Количество</label>
+                <select class="form-control" id="quantity" name="quantity">
+                  {% for i in 1..5 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+          </div>
+          {#<div class="pt-1 mb-2"><span class="text-medium">SKU:</span> #21457832</div>#}
+          <hr class="mb-3">
+          <div class="d-flex flex-wrap justify-content-between">
+            <div class="sp-buttons mt-2 mb-2">
+              <button class="btn btn-primary" type="submit"><i class="icon-bag"></i> В корзину</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

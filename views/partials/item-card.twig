@@ -1,0 +1,33 @@
+<div class="grid-item">
+  <div class="product-card">
+    {#<div class="product-badge text-muted">Out of stock</div>#}
+    {#<div class="product-badge text-danger">50% Off</div>#}
+    <a class="product-thumb" href="/item/{{ item.slug }}"><img src="/img/goods/{{ item.img }}" alt="Product"></a>
+    <h3 class="product-title"><a href="/item/{{ item.slug }}">{{ item.name }}</a></h3>
+    <h4 class="product-price">
+      {% if item.salePrice is defined %}
+        <del>{{ item.price }}</del>
+        {{ item.salePrice }} руб
+      {% else %}
+        {{ item.price }} руб
+      {% endif %}
+    </h4>
+    <div class="product-buttons">
+      <form class="form-add-to-cart">
+        <input type="hidden" name="slug" value="{{ item.slug }}">
+        <button class="btn btn-outline-primary btn-sm" type="submit">В корзину</button>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+
+  sectionLayer.products.push({
+    id: '{{ item.slug }}',
+    name: '{{ item.name }}',
+    category: {{ item.category|json_encode|raw }},
+    price: {{ item.price }},
+    salePrice: {{ item.salePrice is defined ? item.salePrice : 'undefined' }}
+  });
+
+</script>

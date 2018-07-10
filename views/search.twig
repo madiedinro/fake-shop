@@ -1,0 +1,38 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Результаты поиска -->
+  <script type="text/javascript">
+
+    var sectionLayer = {
+      page: {
+        type: 'search'
+      },
+      products: []
+    };
+
+  </script>
+
+
+  <div class="container padding-top-2x padding-bottom-3x mb-1">
+    <!-- Shop Toolbar-->
+    <!-- Products Grid-->
+    <div class="isotope-grid cols-4 mb-2">
+      <div class="gutter-sizer"></div>
+      <div class="grid-sizer"></div>
+
+      {% for item in searchResults %}
+        {% include 'partials/item-card.twig' %}
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <!-- Этот код вставляется в конце шаблона главной страницы -->
+  <script type="text/javascript">
+    openDataLayer.push(sectionLayer);
+  </script>
+
+
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  {% set summ = 0 %}
+
+
+  <!-- Этапы чекаута -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'checkout',
+        step: 5,
+        name: 'Предпросмотр'
+      }
+    });
+  </script>
+
+
+  <!-- Page Title-->
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Покупка</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-2">
+    <div class="row">
+      <!-- Checkout Adress-->
+      <div class="col-xl-9 col-lg-8">
+        <div class="checkout-steps">
+          <a class="active" href="#">4. Предпросмотр</a>
+          <a href="/checkout-payment"><span class="angle"></span>3. Оплата</a>
+          <a href="/checkout-shipping"><span class="angle"></span>2. Доставка</a>
+          <a href="/checkout"><span class="angle"></span>1. Адрес</a>
+        </div>
+
+
+
+        <h4>Проверьте ваш заказ</h4>
+        <hr class="padding-bottom-1x">
+        <div class="table-responsive shopping-cart">
+          <table class="table">
+            <thead>
+            <tr>
+              <th></th>
+              <th class="text-center">Сумма</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for line in cart %}
+              {% set item = items[line.slug] %}
+              {% set discount = item.price - item.salePrice ?? item.price %}
+              {% set summ = summ + item.salePrice ?? item.price * line.quantity %}
+
+
+              <tr>
+                <td>
+                  <div class="product-item"><a class="product-thumb" href="/item/{{ item.slug }}"><img src="/img/goods/{{ item.img }}" alt="Product"></a>
+                    <div class="product-info">
+                      <h4 class="product-title"><a href="/item/{{ item.slug }}">{{ item.name }}<small>x {{ line.quantity }}</small></a></h4>
+                      {#<span><em>Size:</em> 10.5</span>#}
+                      {#<span><em>Color:</em> Dark Blue</span>#}
+                    </div>
+                  </div>
+                </td>
+                <td class="text-center text-lg text-medium">{{ item.salePrice ?? item.price * line.quantity }} руб</td>
+                <td class="text-center"><a class="btn btn-outline-primary btn-sm" href="/cart">Изменить</a></td>
+              </tr>
+
+            {% endfor %}
+
+
+
+            </tbody>
+          </table>
+        </div>
+        <div class="shopping-cart-footer">
+          <div class="column"></div>
+          <div class="column text-lg">Итого: <span class="text-medium">{{ summ }} руб</span></div>
+        </div>
+        <div class="row padding-top-1x mt-3">
+          <div class="col-sm-6">
+            <h5>Доставка:</h5>
+            <ul class="list-unstyled">
+              <li><span class="text-muted">Адрес:</span>Россия, Москва, ул Мясницкая д 13 стр 18</li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <h5>Оплата:</h5>
+            <ul class="list-unstyled">
+              {#<li><span class="text-muted">Credit Card:</span>**** **** **** 5300</li>#}
+              <li>Наличными при получении</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <div class="column"><a class="btn btn-outline-secondary" href="/cart"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Вернуться в корзину</span></a></div>
+          <div class="column"><a class="btn btn-primary" href="/receipt"><span class="hidden-xs-down">Подтвердить&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

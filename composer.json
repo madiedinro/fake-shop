@@ -1,0 +1,9 @@
+{
+    "require": {
+        "twig/twig": "^2.0",
+        "silex/silex": "~2.0",
+        "pug-php/pug": "^3.0",
+        "symfony/yaml": "^3.3",
+        "ramsey/uuid": "^3.7"
+    }
+}

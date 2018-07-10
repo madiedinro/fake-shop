@@ -1,0 +1,45 @@
+
+<script>
+  (function () {
+    var NativeImage;
+        window._images = [];
+        const Image = window.Image;
+        function MyImage2(){
+          const img = new Image();
+          var id = window._images.push(img);
+          Object.defineProperty(img, 'src', {
+            set: function (srcAttr) {
+                console.info(`IMG-SRC[${id}]:  ${srcAttr.replace(/http(s?):\/\//, '')}`);
+                this.setAttribute('src',srcAttr);
+
+            },
+            get: function () {
+                return this.getAttribute('src');
+            }
+          });
+          return img;
+        }
+        MyImage2.prototype = Object.create(Image.prototype);
+        MyImage2.prototype.constructor = MyImage2;
+
+        class MyImage extends Image {
+          constructor(){
+            super();
+            Object.defineProperty(this, 'src', {
+              set: function (srcAttr) {
+                  console.info(`IMG-SRC: ${srcAttr.replace(/http(s?):\/\//, '')}`);
+                  this.setAttribute('src',srcAttr);
+
+              },
+              get: function () {
+                  return this.getAttribute('src');
+              }
+            });
+          }
+        }
+        {# window.MyImage = MyImage; #}
+        {# window.MyImage2 = MyImage2; #}
+        window.Image = MyImage2;
+
+}());
+</script>

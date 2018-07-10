@@ -1,0 +1,73 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Страница корзины -->
+  <script type="text/javascript">
+
+    // Нам удобнее сначала объявить и собрать слой, а отправить его в конце шаблона
+
+    var sectionLayer = {
+      page: {
+        type: 'cart',
+        step: 1
+      }
+    };
+
+  </script>
+
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Корзина</h1>
+      </div>
+    </div>
+  </div>
+  {% set summ = 0 %}
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-1">
+    <!-- Shopping Cart-->
+    <div class="table-responsive shopping-cart">
+      <table class="table">
+        <thead>
+        <tr>
+          <th></th>
+          <th class="text-center">Количество</th>
+          <th class="text-center">Сумма</th>
+          <th class="text-center">Скидка</th>
+          <th class="text-center"><a class="btn btn-sm btn-outline-danger" href="#">Очистить</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for line in cart %}
+          {% set item = items[line.slug] %}
+          {% set discount = item.price - item.salePrice ?? item.price %}
+          {% set summ = summ + item.salePrice ?? item.price * line.quantity %}
+          {% include 'partials/cart-item.twig' %}
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="shopping-cart-footer">
+      <div class="column">
+        <form class="coupon-form" method="post">
+          <input class="form-control form-control-sm" value="{{ order.coupon is defined ? order.coupon : '' }}" name="code" type="text" placeholder="Промокод" required>
+          <button class="btn btn-outline-primary btn-sm" type="submit">Применить</button>
+        </form>
+      </div>
+      <div class="column text-lg">Итого: <span class="text-medium">{{ summ }} руб</span></div>
+    </div>
+    <div class="shopping-cart-footer">
+      <div class="column"><a class="btn btn-outline-secondary" href="/"><i class="icon-arrow-left"></i>&nbsp;Продолжить покупки</a></div>
+      <div class="column">
+        <a class="btn btn-success" href="/checkout">Оформить заказ</a></div>
+    </div>
+  </div>
+  <!-- Записываем слой данных -->
+  <script type="text/javascript">
+
+    openDataLayer.push(sectionLayer);
+  </script>
+
+
+
+{% endblock %}

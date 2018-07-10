@@ -1,0 +1,46 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+
+  <!-- Этапы чекаута -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'receipt',
+        step: 6
+      },
+      transaction: {
+        id: '{{ lastOrder.orderId }}',
+        cartId: '{{ lastOrder.cartId }}',
+        coupon: '{{ lastOrder.coupon }}',
+        subtotal: {{ subtotal }},
+        total: {{ subtotal + 300 }}
+      }
+    });
+
+    openDataLayer.push({{ sectionLayer|raw }});
+  </script>
+
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Покупка</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-2">
+    <div class="card text-center">
+      <div class="card-block padding-top-2x">
+        <h3 class="card-title">Спасибо за ваш заказ!</h3>
+        <p class="card-text">Мы приступили к обработке вашего заказа. В ближайшее время вы отправим его вам.</p>
+        <p class="card-text">Запишите номер вашего заказа <span class="text-medium">34VB5540K83</span></p>
+        <div class="padding-top-1x padding-bottom-1x">
+          <a class="btn btn-outline-secondary" href="/">Продолжить покупки</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

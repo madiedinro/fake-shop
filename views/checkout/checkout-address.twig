@@ -1,0 +1,79 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Этапы чекаута -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'checkout',
+        step: 2,
+        name: 'Адрес доставки'
+      }
+    });
+  </script>
+
+
+  <!-- Page Title-->
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Покупка</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-2">
+    <div class="row">
+      <!-- Checkout Adress-->
+      <div class="col-xl-9 col-lg-8">
+        <div class="checkout-steps">
+          <a href="#">4. Предпросмотр</a>
+          <a href="#"><span class="angle"></span>3. Оплата</a>
+          <a href="#"><span class="angle"></span>2. Доставка</a>
+          <a class="active" href="#"><span class="angle"></span>1. Адрес</a></div>
+        <h4>Адрес доставки</h4>
+        <hr class="padding-bottom-1x">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="checkout-country">Страна</label>
+              <select class="form-control" id="checkout-country">
+                <option>Россия</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="checkout-city">Город</label>
+              <select class="form-control" id="checkout-city">
+                <option>Москва</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="checkout-zip">Индекс</label>
+              <input class="form-control" type="text" id="checkout-zip">
+            </div>
+          </div>
+        </div>
+        <div class="row padding-bottom-1x">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="checkout-address1">Адрес</label>
+              <input class="form-control" type="text" id="checkout-address1">
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <div class="column"><a class="btn btn-outline-secondary" href="/cart"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Вернуться в корзину</span></a></div>
+          <div class="column"><a class="btn btn-primary" href="/checkout-shipping"><span class="hidden-xs-down">Продолжить&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

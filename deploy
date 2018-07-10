@@ -1,0 +1,1 @@
+rsync -a  --exclude=composer.phar --exclude=.git --exclude=bower_components --exclude=node_modules . root@front.nktch.com:/srv/www/demo

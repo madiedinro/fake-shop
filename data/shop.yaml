@@ -1,0 +1,123 @@
+---
+cats:
+  - slug: wear
+    name: Одежда
+  - slug: underwear
+    parent: wear
+    name: Нижнее белье
+  - slug: home
+    name: Товары для дома
+  - slug: shower
+    parent: home
+    name: Шторки для душа
+  - slug: pillow
+    parent: home
+    name: Подушки
+
+items:
+  - name: Просто картошка
+    category: [wear, underwear]
+    slug: uw_french_fries
+    price: 990
+    salePrice: 690
+    img: AOPUW0866U_French_Fries_Mockup_grande.jpg
+  - name: Свеженький Prince
+    category: [wear, underwear]
+    slug: uw_fresh_prince
+    price: 990
+    img: AOPUW0090U_Fresh_Prince_Mockup_63c3cb14-8cf1-4c81-8765-568a1120736d_grande.jpg
+    isNew: true
+  - name: Котзилла
+    category: [wear, underwear]
+    slug: uw_rampage_cat
+    price: 990
+    img: AOPUW1876U_Rampage_Cat_Mockup_1bcbcc7b-3624-4a6d-bfd7-525d1c53a983_grande.jpg
+    topSeller: true
+  - name: Вселенная
+    category: [wear, underwear]
+    slug: uw_solar_kitten
+    price: 990
+    img: AOPUW1894U_Solar_Kitten_Mockup_2379d46c-2352-46c8-98ed-d7a193f06b23_grande.jpg
+    onMain: true
+  - name: Космический осьминог
+    category: [wear, underwear]
+    slug: uw_octopus_space
+    price: 990
+    img: AOPUW2051U_Octopus_Space_Mockup_19d6a348-7b27-4348-a6b5-f818dbbcf7bf_grande.jpg
+    isNew: true
+  - name: Секретное оружие
+    category: [wear, underwear]
+    slug: uw_worship_burger
+    price: 990
+    img: AOPUW1867U_Worship_the_Burger_Mockup_3932c903-e95d-4ad9-8be1-90239bf99efa_grande.jpg
+    onMain: true
+  - name: Таблетосы
+    category: [wear, underwear]
+    slug: uw_xanax
+    price: 990
+    img: AOPUW1089UOS_Xanax_Mockup_f20184b6-e465-4635-89c9-1be3473e5f50_grande.jpg
+    bestRating: true
+  - name: Удивленные котэ
+    category: [wear, underwear]
+    slug: uw_surprised_cat
+    price: 990
+    img: AOPUW1164U_Surprised_Cats_Mockup_grande.jpg
+    bestRating: true
+  - name: Bomb
+    category: [wear, underwear]
+    slug: uw_artistic_bomb
+    price: 990
+    img: AOPUW1926U_Artistic_Bomb_Mockup_bad246d3-c1ff-4c77-bca8-bb67594d4505_grande.jpg
+    onMain: true
+  - name: Кислота
+    category: [wear, underwear]
+    slug: uw_swirlz
+    price: 990
+    img: PSYUW0017U_Swirlz_Mockup_grande.jpg
+    onMain: true
+
+  - name: Завоевание
+    category: [home, shower]
+    slug: shower_no_one
+    price: 1990
+    img: URBSC0016UAPT_The_Kitten_No_One_Loved_Mockup_79a2a5e2-7c7e-41e7-a93c-de0b706450c2_grande.jpg
+    onMain: true
+    bestRating: true
+  - name: Мочилово
+    category: [home, shower]
+    slug: shower_fight
+    price: 1990
+    img: AOPSC0001UAPT_420_Pillow_Fight_Mockup_f712838e-461d-425f-a5c7-9ed51d063830_grande.jpg
+    onMain: true
+    topSeller: true
+  - name: Бекон
+    category: [home, shower]
+    slug: shower_bacon_cat
+    price: 1990
+    img: AOPSC0023UAPT_Bacon_Cat_Mockup_aa3e9e5e-880b-4cba-ab4e-151e1f2c1898_grande.jpg
+    isNew: true
+
+  - name: Оскар
+    category: [home, pillow]
+    slug: pillow_oscar
+    price: 1590
+    img: AOPSL0164UAPT_Oscar_The_Nug_Mockup_0cf1a76e-8ead-406f-ae5f-d52d7d3971f8_grande.jpg
+    topSeller: true
+  - name: Секретное оружие
+    category: [home, pillow]
+    slug: pillow_worship_burger
+    price: 1590
+    img: AOPBW1867UAPT_Worship_the_Burger_Mockup_7f6ab70f-a2d3-46ca-a128-fc08352c5789_grande.jpg
+    onMain: true
+  - name: Вишня
+    category: [home, pillow]
+    slug: pillow_cherry_blossom
+    price: 1590
+    img: URBSL0009UAPT_Cherry_Blossom_Mockup_1f9caa5e-1978-4bf2-8ef0-fedb2ab77f6a_grande.jpg
+  - name: Сатакот
+    category: [home, pillow]
+    slug: pillow_satancat
+    price: 1590
+    img: AOPSL0197UAPT_Satan_Cat_Mockup_1388f37d-0d76-48ff-83de-3fce050f855c_grande.jpg
+    onMain: true
+

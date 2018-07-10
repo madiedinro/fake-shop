@@ -1,0 +1,40 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+
+  <!-- Этот код вставляется в шаблоне соответствующей контентной страницы -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'content',
+        name: 'Контакты'
+      }
+    });
+  </script>
+
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Контакты</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-2x mb-2">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="display-3 text-muted opacity-75 mb-30">Поддержка клиентов</div>
+      </div>
+      <div class="col-md-5">
+        <ul class="list-icon">
+          <li> <i class="icon-mail"></i><a class="navi-link" href="mailto:customer.service@odlayer.org">customer.service@odlayer.org</a></li>
+          <li> <i class="icon-bell"></i>+7(499) 322-78-52</li>
+          <li> <i class="icon-clock"></i>1 - 2 рабочих дня</li>
+        </ul>
+      </div>
+    </div>
+    <hr class="margin-top-2x">
+
+  </div>
+
+{% endblock %}

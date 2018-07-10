@@ -1,0 +1,84 @@
+<script type="text/javascript">
+!function (w, d, c) {
+  c = {
+    'autoPageviewEvent': true,
+    'autoPageviewBasedEvents': true,
+    'currency': 'RUB',
+    'persistentProps': ['user.test'],
+    "scripts": [
+        {
+            "id": "98d1fb31-a553-4dfa-8ba9-758e3fff351d",
+            "handler": "this.layerManager.push({\n    page: {\n        type_test: 'cart',\n    }\n});",
+            "criteria": [
+                "^(?:\\/cart)$"
+            ]
+        },
+        {
+            "id": "7c1e489d-2a9e-47dc-833f-4153a5b23867",
+            "handler": "console.log('hello from script!');",
+            "criteria": []
+        }
+    ],
+    'integrations': [
+      {'name': 'AdvCake', 'cookieDomain': '.demo.odlayer.org', 'clientId': 'test', 'restrictions': {'utmSource': 'advcake'}},
+      {'name': 'Segment', 'token': '9ZaSHTAlkDhnVfvQfgDcObLQ3SsMvpra'},
+      {
+        'name': 'GoogleAnalytics',
+        'trackingId': 'UA-109239445-1',
+        'sendUserId': true,
+        'eventsMap': [
+          {'src': 'User Subscribed', 'dst': 'User Subscribed'}
+        ],
+        'dimensions': [
+          {'dataSource': 'state', 'src': 'user.googleClientId', 'dst': 'dimension1'}
+        ]
+      },
+      {
+        'name': 'YandexMetrika',
+        'counterId': '46380273',
+        'ecommerce': true,
+        'sendUserId': true,
+        'purchaseGoalId': 34584195,
+        'eventsMap': [
+          {'src': 'Clicked Campaign', 'dst': 'campaign_click'}
+        ],
+        'visitParams': [
+          {'dataSource': 'state', 'src': 'user.isLoggedIn', 'dst': 'isLoggedIn'},
+          {'dataSource': 'state', 'src': 'context.session.number', 'dst': 'sessionNumber'}
+        ],
+        'userParams': [
+          {'dataSource': 'state', 'src': 'user.isReturning', 'dst': 'isReturning'}
+        ],
+      },
+      // 'Chatra': {
+      //   'chatraId': 'AHPxYFTBuRdBhQMCu',
+      //   'receiveEvents': true,
+      //   'urlToNotes': true
+      // }
+      // 'FacebookPixel': {'pixelId': '606250126207010'},
+      // 'Vkontakte': {
+      //   'pixelCode': 'VK-RTRG-149200-6h55c',
+      //   'events': ['Added Product', 'Purchase']
+      // }
+    ]
+  }
+  w.openDataLayer = w.openDataLayer || [];
+  w.layerManager || (function () {
+    var layerManager = w.layerManager = function () {
+      layerManager.queue.push(Array.prototype.slice.call(arguments));
+    };
+    layerManager.queue = [];
+    layerManager.SV = '1.2.0';
+    layerManager.load = function (src) {
+      var s = d.createElement("script");
+      s.type = "text/javascript";
+      s.async = !0;
+      s.src = src;
+      var a = d.getElementsByTagName("script")[0];
+      a.parentNode.insertBefore(s, a);
+    };
+    layerManager.load('https://149208.selcdn.ru/odlayer/odlm{{ isDevServer ? '-dev' : '' }}.js?' + (+new Date()));
+    layerManager('configure', c);
+  })();
+}(window, document, {});
+</script>

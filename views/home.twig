@@ -1,0 +1,106 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Главная страница -->
+  <script type="text/javascript">
+
+    // Нам удобнее сначала объявить и собрать слой, а отправить его в конце шаблона
+
+    var sectionLayer = {
+      page: {
+        type: 'home'
+      },
+      products: []
+    };
+
+  </script>
+
+
+  <div class="container padding-top-2x padding-bottom-3x mb-1">
+    <!-- Shop Toolbar-->
+    <!-- Products Grid-->
+    <div class="isotope-grid cols-4 mb-2">
+      <div class="gutter-sizer"></div>
+      <div class="grid-sizer"></div>
+
+      {% for item in items %}
+        {% if item.onMain is defined and item.onMain == true %}
+          {% include 'partials/item-card.twig' %}
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Product Widgets-->
+  <section class="container padding-bottom-2x">
+    <div class="row">
+      <div class="col-md-4 col-sm-6">
+        <div class="widget widget-featured-products">
+          <h3 class="widget-title">Топ продаж</h3>
+          {% for item in items %}
+            {% if item.topSeller is defined and item.topSeller == true %}
+              {% include 'partials/item-small-row.twig' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="widget widget-featured-products">
+          <h3 class="widget-title">Новинки</h3>
+
+          {% for item in items %}
+            {% if item.isNew is defined and item.isNew == true %}
+              {% include 'partials/item-small-row.twig' %}
+            {% endif %}
+          {% endfor %}
+
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6">
+        <div class="widget widget-featured-products">
+          <h3 class="widget-title">Лучшие оценки</h3>
+          {% for item in items %}
+            {% if item.bestRating is defined and item.bestRating == true %}
+              {% include 'partials/item-small-row.twig' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services-->
+  <section class="container padding-top-3x padding-bottom-2x">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 text-center mb-30"><img
+          class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3" src="img/services/01.png" alt="Shipping">
+        <h6>Бесплатная доставка</h6>
+        <p class="text-muted margin-bottom-none">При покупках от 5000 рублей</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-30"><img
+          class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3" src="img/services/02.png" alt="Money Back">
+        <h6>Возврат денег</h6>
+        <p class="text-muted margin-bottom-none">30 дней на возврат</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-30"><img
+          class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3" src="img/services/03.png" alt="Support">
+        <h6>24/7 поддержка</h6>
+        <p class="text-muted margin-bottom-none">Готовы ответить на все вопросы</p>
+      </div>
+      <div class="col-md-3 col-sm-6 text-center mb-30"><img
+          class="d-block w-90 img-thumbnail rounded-circle mx-auto mb-3" src="img/services/04.png" alt="Payment">
+        <h6>Безопасные платежи</h6>
+        <p class="text-muted margin-bottom-none">Надержное шифрование при оплате</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Этот код вставляется в конце шаблона главной страницы -->
+  <script type="text/javascript">
+    openDataLayer.push(sectionLayer);
+  </script>
+
+
+
+{% endblock %}

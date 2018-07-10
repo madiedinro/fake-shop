@@ -1,0 +1,30 @@
+//
+// Full Width Section
+// --------------------------------------------------
+
+.fw-section {
+  position: relative;
+  width: 100%;
+  background: {
+    position: 50% 50%;
+    repeat: no-repeat;
+    size: cover;
+  }
+
+  // Overlay
+  > .overlay { @include overlay-block(1, $black-color, .6); }
+
+  // Content
+  > .container,
+  > .container-fluid,
+  > div {
+    position: relative;
+    z-index: 5;
+  }
+
+  // Fixed Background
+  &.bg-fixed { background-attachment: fixed; }
+
+  // No cover background
+  &.no-cover-bg { background-size: auto; }
+}

@@ -1,0 +1,130 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+
+  <!-- Страница товарной категории -->
+  <script type="text/javascript">
+
+    // Нам удобнее сначала объявить и собрать слой, а отправить его в конце шаблона
+
+    var sectionLayer = {
+      page: {
+        type: 'category',
+        category: {{ categories|json_encode|raw }}
+      },
+      products: []
+    };
+
+  </script>
+
+
+
+  <!-- Page Title-->
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>{{ cat.name }}</h1>
+      </div>
+      <div class="column">
+        <ul class="breadcrumbs">
+          <li><a href="/">Главная</a>
+          </li>
+          <li class="separator">&nbsp;</li>
+          <li>{{ cat.name }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="container padding-bottom-3x mb-1">
+    <div class="row">
+      <!-- Products-->
+      <div class="col-xl-9 col-lg-8 order-lg-2">
+        <!-- Shop Toolbar-->
+        <div class="shop-toolbar padding-bottom-1x mb-2">
+          <div class="column">
+            <div class="shop-sorting">
+              <label for="sorting">Выводить по:</label>
+              <select class="form-control" id="sorting">
+                <option>Популярности</option>
+                <option>Low - High Price</option>
+                <option>High - Low Price</option>
+                <option>Avarage Rating</option>
+                <option>A - Z Order</option>
+                <option>Z - A Order</option>
+              </select><span class="text-muted">Показано:&nbsp;</span><span>1 - 12 items</span>
+            </div>
+          </div>
+        </div>
+        <!-- Products Grid-->
+        <div class="isotope-grid cols-3 mb-2">
+          <div class="gutter-sizer"></div>
+          <div class="grid-sizer"></div>
+          {% for item in db.items %}
+            {% if (category in item.category and not subcategory) or (category in item.category and subcategory in item.category) %}
+              {% include 'partials/item-card.twig' %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        <!-- Pagination-->
+        <nav class="pagination">
+          <div class="column">
+            <ul class="pages">
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+            </ul>
+          </div>
+          <div class="column text-right hidden-xs-down">
+            <a class="btn btn-outline-secondary btn-sm" href="#">Дальше&nbsp;<i class="icon-arrow-right"></i></a>
+          </div>
+        </nav>
+      </div>
+      <!-- Sidebar          -->
+      <div class="col-xl-3 col-lg-4 order-lg-1">
+        <aside class="sidebar">
+          <div class="padding-top-2x hidden-lg-up"></div>
+          <!-- Widget Categories-->
+          <section class="widget widget-categories">
+            <h3 class="widget-title">Категории</h3>
+            <ul>
+
+              {% for cat in db.cats %}
+
+                {% if not cat.parent is defined %}
+
+                  <li class="has-children {{ cat.slug == category ? 'expanded' : '' }}"><a
+                      href="#">{{ cat.name }}</a><span>(1138)</span>
+                    <ul>
+                      {% for subcat in db.cats %}
+                        {% if subcat.parent is defined and subcat.parent == cat.slug %}
+                          <li><a href="/category/{{ cat.slug }}/{{ subcat.slug }}">{{ subcat.name }}</a></li>
+                        {% endif %}
+                      {% endfor %}
+                    </ul>
+                  </li>
+
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </section>
+
+          <!-- Widget Size Filter-->
+          {% if category == 'wear' %}
+            {% include 'partials/size-filter.twig' %}
+          {% endif %}
+
+        </aside>
+      </div>
+    </div>
+  </div>
+
+  <!-- Записываем слой данных -->
+  <script type="text/javascript">
+
+    openDataLayer.push(sectionLayer);
+  </script>
+
+{% endblock %}
+
+
+

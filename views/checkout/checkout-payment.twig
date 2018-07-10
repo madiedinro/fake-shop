@@ -1,0 +1,89 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Этапы чекаута -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'checkout',
+        step: 4,
+        name: 'Способ оплаты'
+      }
+    });
+  </script>
+
+  <!-- Page Title-->
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Покупка</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-2">
+    <div class="row">
+      <!-- Checkout Adress-->
+      <div class="col-xl-9 col-lg-8">
+        <div class="checkout-steps">
+          <a href="#">4. Предпросмотр</a>
+          <a class="active" href="#"><span class="angle"></span>3. Оплата</a>
+          <a href="/checkout-shipping"><span class="angle"></span>2. Доставка</a>
+          <a href="/checkout"><span class="angle"></span>1. Адрес</a>
+        </div>
+
+        <h4>Выберите способ оплаты</h4>
+        <hr class="padding-bottom-1x">
+        <div class="accordion" id="accordion" role="tablist">
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a href="#card" data-toggle="collapse" data-parent="#accordion"><i class="icon-columns"></i>Оплата картой онлайн</a></h6>
+            </div>
+            <div class="collapse show" id="card" role="tabpanel">
+              <div class="card-body">
+                <p>Мы принимаем:&nbsp;<img class="d-inline-block align-middle" src="img/credit-cards.png" style="width: 120px;" alt="Cerdit Cards"></p>
+                <div class="card-wrapper"></div>
+                <form class="interactive-credit-card row" action="/checkout-payment" method="get">
+                  <div class="form-group col-sm-6">
+                    <input class="form-control" type="text" name="number" placeholder="Номер карты" required>
+                  </div>
+                  <div class="form-group col-sm-6">
+                    <input class="form-control" type="text" name="name" placeholder="Иия на карте" required>
+                  </div>
+                  <div class="form-group col-sm-3">
+                    <input class="form-control" type="text" name="expiry" placeholder="ММ/ДД" required>
+                  </div>
+                  <div class="form-group col-sm-3">
+                    <input class="form-control" type="text" name="cvc" placeholder="CVC" required>
+                  </div>
+                  <div class="col-sm-6">
+                    <button class="btn btn-outline-primary btn-block margin-top-none" type="submit">Оплатить</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header" role="tab">
+              <h6><a class="collapsed" href="#points" data-toggle="collapse" data-parent="#accordion"><i class="icon-medal"></i>Оплата при получении</a></h6>
+            </div>
+            <div class="collapse" id="points" role="tabpanel">
+              <div class="card-body">
+                <label class="custom-control custom-checkbox d-block">
+                  <input class="custom-control-input" type="checkbox"><span class="custom-control-indicator"></span><span class="custom-control-description">Я буду оплачивать банковской картой.</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <div class="column"><a class="btn btn-outline-secondary" href="/cart"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Вернуться в корзину</span></a></div>
+          <div class="column"><a class="btn btn-primary" href="/checkout-review"><span class="hidden-xs-down">Продолжить&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

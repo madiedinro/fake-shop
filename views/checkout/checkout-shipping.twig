@@ -1,0 +1,85 @@
+{% extends "partials/layout.twig" %}
+{% block content %}
+
+  <!-- Этапы чекаута -->
+  <script type="text/javascript">
+    openDataLayer.push({
+      page: {
+        type: 'checkout',
+        step: 3,
+        name: 'Способ доставки'
+      }
+    });
+  </script>
+
+
+  <!-- Page Title-->
+  <div class="page-title">
+    <div class="container">
+      <div class="column">
+        <h1>Покупка</h1>
+      </div>
+    </div>
+  </div>
+  <!-- Page Content-->
+  <div class="container padding-bottom-3x mb-2">
+    <div class="row">
+      <!-- Checkout Adress-->
+      <div class="col-xl-9 col-lg-8">
+        <div class="checkout-steps">
+          <a href="#">4. Предпросмотр</a>
+          <a href="#"><span class="angle"></span>3. Оплата</a>
+          <a class="active" href="#"><span class="angle"></span>2. Доставка</a>
+          <a href="/checkout"><span class="angle"></span>1. Адрес</a></div>
+        <h4>Выберите способ доставки</h4>
+        <hr class="padding-bottom-1x">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="thead-default">
+            <tr>
+              <th>Способ доставки</th>
+              <th>Срок</th>
+              <th>Стоимость</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td class="align-middle">
+                <span class="text-medium">Экспресс</span><br>
+                {#<span class="text-muted text-sm">All Addresses(default zone), United States & Canada</span>#}
+              </td>
+              <td class="align-middle">1 - 2 дня</td>
+              <td class="align-middle">500 руб</td>
+              <td class="align-middle">
+                <label class="custom-control custom-radio">
+                  <input class="custom-control-input" type="radio" name="shipping-method" checked><span class="custom-control-indicator"></span>
+                </label>
+              </td>
+            </tr>
+            <tr>
+              <td class="align-middle">
+                <span class="text-medium">Стандарт</span><br>
+                {#<span class="text-muted text-sm">All Addresses(default zone), United States & Canada</span>#}
+              </td>
+              <td class="align-middle">3-4 дня</td>
+              <td class="align-middle">бесплатно</td>
+              <td class="align-middle">
+                <label class="custom-control custom-radio">
+                  <input class="custom-control-input" type="radio" name="shipping-method"><span class="custom-control-indicator"></span>
+                </label>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="checkout-footer">
+          <div class="column"><a class="btn btn-outline-secondary" href="/cart"><i class="icon-arrow-left"></i><span class="hidden-xs-down">&nbsp;Вернуться в корзину</span></a></div>
+          <div class="column"><a class="btn btn-primary" href="/checkout-payment"><span class="hidden-xs-down">Продолжить&nbsp;</span><i class="icon-arrow-right"></i></a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

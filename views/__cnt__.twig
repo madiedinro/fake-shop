@@ -1,0 +1,12 @@
+<script type="text/javascript">
+  window.openDataLayer = window.openDataLayer || [];
+</script>
+
+{% if host == 'demo.test' %}
+  {% include '__cnt_demotest.twig' %}
+{% endif %}
+{% if host == 'demo.rstat.org' %}
+  {% include '__cnt_rstat.twig' %}
+{% endif %}
+{# {% include 'counters/odl_manual.twig' %} #}
+
