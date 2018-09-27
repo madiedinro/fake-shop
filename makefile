@@ -13,7 +13,7 @@ deploy:
 
 run:
 	@docker rm -f fake-shop || true
-	@docker run --name fake-shop -d -e DOMAIN=stat.rock.dev --restart on-failure -p 127.0.0.1:9010:9000 madiedinro/fake-shop
+	@docker run --name fake-shop -d -e DOMAIN=stat.rock.dev --restart on-failure -p 127.0.0.1:8012:8080 madiedinro/fake-shop
 
 to_master:
 	@echo $(BR)
