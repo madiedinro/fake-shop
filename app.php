@@ -25,7 +25,7 @@ $app = new Silex\Application();
 $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__ . '/views',
 ));
-$app['twig']->addGlobal('tracker_domain', $_SERVER['DOMAIN']);
+$app['twig']->addGlobal('tracker_domain', $_ENV['DOMAIN']);
 
 $app->register(new Silex\Provider\SessionServiceProvider());
 
