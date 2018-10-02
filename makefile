@@ -11,7 +11,7 @@ build:
 deploy:
 	rsync -a  --exclude=composer.phar --exclude=.git --exclude=bower_components --exclude=node_modules . root@front.nktch.com:/srv/www/demo
 
-run:
+run: build
 	@docker rm -f fake-shop || true
 	@docker run --name fake-shop -d -e DOMAIN=stat.rock.dev --restart on-failure -p 127.0.0.1:8012:8080 madiedinro/fake-shop
 
