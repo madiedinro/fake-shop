@@ -2,7 +2,7 @@
   window.openDataLayer = window.openDataLayer || [];
 </script>
 
-<script type="text/javascript">
+{# <script type="text/javascript">
   !function (w, d, st, cn, hs, lj, rst, se, he) {
     if(w.rstat) return; rst = w.rstat = function () {
       var a = Array.prototype.slice.call(arguments);
@@ -22,7 +22,9 @@
   });
   // отправка просмотра страницы, после загрузки. Убирается на SPA
   rstat('page');
-</script>
+</script> #}
+
+<script type="text/javascript" src="//{{tracker_domain}}/public/box-demo.js" async />
 
 {# {% if host == 'demo.test' %} #}
   {# {% include '__cnt_demotest.twig' %} #}
