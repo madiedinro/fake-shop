@@ -6,7 +6,8 @@ bump-minor:
 	bumpversion minor
 
 build:
-	docker build -t madiedinro/fake-shop .
+	docker build -t fake-shop .
+	docker tag fake-shop madiedinro/fake-shop
 
 deploy:
 	rsync -a  --exclude=composer.phar --exclude=.git --exclude=bower_components --exclude=node_modules . root@front.nktch.com:/srv/www/demo
