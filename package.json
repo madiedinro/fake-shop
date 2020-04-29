@@ -28,7 +28,7 @@
     "html-webpack-plugin": "^3.2.0",
     "imports-loader": "^0.8.0",
     "isotope-layout": "^3.0.4",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "modernizr": "^3.5.0",
     "node-sass": "^4.5.3",
     "owl.carousel": "^2.2.0",
